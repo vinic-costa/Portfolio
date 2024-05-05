@@ -2,20 +2,21 @@
   "name": "portfolio",
   "homepage": "https://hamishw.com",
   "description": "Portfolio site for Hamish Williams",
-  "repository": "https://github.com/HamishMW/portfolio.git",
+  "repository": "https://github.com/vinic-costa/Portfolio.git",
   "author": "Vinicius Costa",
   "sideEffects": false,
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
     "dev": "node ./scripts/dev.cjs && remix vite:dev",
-    "start": "wrangler pages dev ./build/client",
+    "start": "remix vite:preview",
     "postinstall": "node ./scripts/draco.cjs",
-    "deploy": "npm run build && wrangler pages deploy ./build/client --project-name portfolio",
+    "deploy": "npm run build && vercel --prod",
     "dev:storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build",
-    "deploy:storybook": "wrangler pages deploy ./storybook-static --project-name portfolio-storybook --branch main"
+    "deploy:storybook": "vercel --prod --scope=<your-vercel-account> --project=<project-name> ./storybook-static"
   },
+  
   "dependencies": {
     "@aws-sdk/client-ses": "^3.515.0",
     "@mdx-js/react": "^3.0.1",
